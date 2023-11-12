@@ -1,11 +1,14 @@
-import React from 'react';
 
-const Router = () => {
-    return (
-        <div>
-            
-        </div>
-    );
-};
+import { createBrowserRouter } from 'react-router-dom';
 
-export default Router;
+const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <div>Hello world!</div>,
+      children:[
+        
+      ]
+    },
+  ]);
+  
+  export default router;
