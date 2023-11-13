@@ -17,7 +17,7 @@ const PopularMenu = () => {
         })
 
     },[])
-   console.log(popular)
+//    console.log(popular)
     return (
         <section className="space-y-5 my-4">
             <SectionTitle
