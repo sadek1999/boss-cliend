@@ -2,9 +2,9 @@ import { Helmet } from "react-helmet-async";
 import Cover from "../../../Share/Cover/Cover";
 import img1 from '../../../assets/menu/banner3.jpg'
 import img2 from '../../../assets/menu/dessert-bg.jpeg'
-// import img3 from '../../../assets/menu/pizza-bg.jpg'
-// import img4 from '../../../assets/menu/salad-bg.jpg'
-// import img5 from '../../../assets/menu/soup-bg.jpg'
+import img3 from '../../../assets/menu/pizza-bg.jpg'
+import img4 from '../../../assets/menu/salad-bg.jpg'
+import img5 from '../../../assets/menu/soup-bg.jpg'
 
 import useMenu from "../../../Components/usemenu/Usemenu";
 import SectionTitle from './../../../Components/SectionTitle/SectionTitle';
@@ -23,7 +23,7 @@ const Menu = () => {
     const offered=menu?.filter(items=>items.category=== 'offered')
     console.log(offered)
     return (
-        <div>
+        <div className="space-y-10">
 
             <Helmet>
                 <title>bistro boss |menu</title>
@@ -41,16 +41,18 @@ const Menu = () => {
            
             <MenuCatagory items={desserts}></MenuCatagory>
 
-            {/* <Cover img={img5} title={'soup'}></Cover>
-            <Menuitem items={soup}></Menuitem> */}
+            <Cover img={img5} title={'soup'}></Cover>
+            <MenuCatagory items={soup}></MenuCatagory>
 
-            {/* <Cover img={img4} title={'salad'}></Cover>
-            <Menuitem items={salad}></Menuitem> */}
 
-            {/* <Cover img={img3} title={'pizza'}></Cover>
-            <Menuitem items={pizza}></Menuitem>
+            <Cover img={img4} title={'salad'}></Cover>
+            <MenuCatagory items={salad}></MenuCatagory>
 
-          */}
+
+            <Cover img={img3} title={'pizza'}></Cover>
+            <MenuCatagory items={pizza}></MenuCatagory>
+
+         
 
             
            

@@ -6,7 +6,7 @@ const MenuCatagory = ({items}) => {
         <div>
             <div className="grid md:grid-cols-2 gap-2 ">
                 {
-                    items?.map(item=><Menuitem key={item._id} item={item}></Menuitem>)
+                    items?.map(item=><Menuitem className="p-3" key={item._id} item={item}></Menuitem>)
                 }
             </div>
         </div>

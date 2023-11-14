@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
 
     const navoptions = <>
+        <li><Link to={'/'}>Home</Link></li>
         <li><Link to={'/menu'}>Menu</Link></li>
-        <li><a>Item 1</a></li>
+        <li><Link to={'/order'}>Order</Link></li>
+      
+        
 
-        <li><a>Item 3</a></li>
+       
     </>
     return (
         <div className="navbar fixed z-10 bg-black bg-opacity-30 max-w-screen-xl text-white">
