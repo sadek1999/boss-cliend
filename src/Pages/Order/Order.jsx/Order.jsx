@@ -1,9 +1,39 @@
-
+import { useState } from "react";
+import Cover from "../../../Share/Cover/Cover";
+import banner from "../../../assets/shop/banner2.jpg"
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+import useMenu from "../../../Components/usemenu/Usemenu";
 
 const Order = () => {
+    const [tabIndex,setTabindex]=useState(0)
+    const [menu]=useMenu();
+
+    const desserts=menu?.filter(items=>items.category=== 'dessert')
+    const pizza=menu?.filter(items=>items.category=== 'pizza')
+    const salad=menu?.filter(items=>items.category=== 'salad')
+    const soup=menu?.filter(items=>items.category=== 'soup')
+    const offered=menu?.filter(items=>items.category=== 'offered')
     return (
         <div>
-            
+            <Cover title={'our shop'} img={banner}></Cover>
+            <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabindex(index)}>
+                <TabList>
+                    <Tab>Salad</Tab>
+                    <Tab>Pizza</Tab>
+                    <Tab>Soup</Tab>
+                    <Tab>Desserts</Tab>
+                    <Tab>Drinks</Tab>
+                   
+                </TabList>
+                <TabPanel></TabPanel>
+                <TabPanel></TabPanel>
+                <TabPanel></TabPanel>
+                <TabPanel></TabPanel>
+                <TabPanel></TabPanel>
+                <TabPanel></TabPanel>
+            </Tabs>
+
         </div>
     );
 };
