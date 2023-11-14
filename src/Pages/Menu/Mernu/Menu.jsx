@@ -11,7 +11,7 @@ const Menu = () => {
                 <title>bistro boss |menu</title>
                 
             </Helmet>
-            <Cover img={img}></Cover>
+            <Cover img={img} title={"our menu"}></Cover>
             <h1>Man mau manue</h1>
         </div>
     );
