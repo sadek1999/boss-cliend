@@ -16,11 +16,11 @@ const Testemoneals = () => {
         fetch('reviews.json')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setreviews(data)
             })
     }, [])
-    console.log(reviews)
+    // console.log(reviews)
     return (
         <div className="my-20 space-y-10">
             <SectionTitle
