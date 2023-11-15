@@ -5,6 +5,8 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenu from "../../../Components/usemenu/Usemenu";
 
+import FoodCataogory from "../Foodcatagrory/FoodCataogory";
+
 const Order = () => {
     const [tabIndex,setTabindex]=useState(0)
     const [menu]=useMenu();
@@ -13,7 +15,7 @@ const Order = () => {
     const pizza=menu?.filter(items=>items.category=== 'pizza')
     const salad=menu?.filter(items=>items.category=== 'salad')
     const soup=menu?.filter(items=>items.category=== 'soup')
-    const offered=menu?.filter(items=>items.category=== 'offered')
+    const drinks=menu?.filter(items=>items.category=== 'drinks')
     return (
         <div>
             <Cover title={'our shop'} img={banner}></Cover>
@@ -26,11 +28,23 @@ const Order = () => {
                     <Tab>Drinks</Tab>
                    
                 </TabList>
-                <TabPanel></TabPanel>
-                <TabPanel></TabPanel>
-                <TabPanel></TabPanel>
-                <TabPanel></TabPanel>
-                <TabPanel></TabPanel>
+                <TabPanel>
+                   <FoodCataogory items={salad}></FoodCataogory>
+                </TabPanel>
+                <TabPanel>
+                <FoodCataogory items={pizza}></FoodCataogory>
+                </TabPanel>
+                <TabPanel>
+                <FoodCataogory items={soup}></FoodCataogory>
+                </TabPanel>
+                <TabPanel>
+                <FoodCataogory items={desserts}></FoodCataogory>
+               
+                </TabPanel>
+                <TabPanel>
+                <FoodCataogory items={drinks}></FoodCataogory>
+               
+                </TabPanel>
                 <TabPanel></TabPanel>
             </Tabs>
 
