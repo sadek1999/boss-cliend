@@ -1,9 +1,19 @@
-
+import { useEffect } from 'react';
+import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 
 const Login = () => {
 
+
+    useEffect(()=>{
+        loadCaptchaEnginge(6); 
+    },[])
+
     const handlsubmit=e=>{
         e.preventDefault();
+        const from =e.target;
+        const password= from.password.value;
+        const email=from.email.value;
+        console.log(password,email)
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -18,19 +28,27 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="email" className="input input-bordered" required />
+                            <input type="email" name='email' placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="password" className="input input-bordered" required />
+                            <input type="password" placeholder="password" name='password' className="input input-bordered" required />
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>
-                        <div className="form-control mt-6">
+                        <div className="form-control">
+                        <label className="label">
+                        <LoadCanvasTemplate />
+                            </label>
+                       
+                            <input type="password" placeholder="password" className="input input-bordered" required />
                             
+                        </div>
+                        <div className="form-control mt-6">
+                        
                             <input className="btn btn-primary" type="submit" onSubmit={handlsubmit} value="Login" />
                         </div>
                     </form>
