@@ -8,12 +8,19 @@ const Login = () => {
         loadCaptchaEnginge(6); 
     },[])
 
+
+
     const handlsubmit=e=>{
         e.preventDefault();
         const from =e.target;
         const password= from.password.value;
         const email=from.email.value;
         console.log(password,email)
+    }
+
+    const handlcapcha=e=>{
+        e.preventDefault();
+        
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -44,7 +51,8 @@ const Login = () => {
                         <LoadCanvasTemplate />
                             </label>
                        
-                            <input type="password" placeholder="password" className="input input-bordered" required />
+                            <input type="password" placeholder="type the capcha" className="input input-bordered" required />
+                            <button onClick={handlcapcha} className="btn btn-outline btn-error btn-xs mt-3 ">Error</button>
                             
                         </div>
                         <div className="form-control mt-6">
