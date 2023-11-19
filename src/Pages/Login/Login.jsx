@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 
 const Login = () => {
+    const captchaRaf=useRef(null)
+    const [disabal,setdisabal]=useState(true)
 
 
     useEffect(()=>{
@@ -20,6 +22,10 @@ const Login = () => {
 
     const handlcapcha=e=>{
         e.preventDefault();
+        const user_captcha_value =captchaRaf.current.value;
+        if (validateCaptcha(user_captcha_value)) {
+            setdisabal(false)
+        }
         
     }
     return (
@@ -51,13 +57,15 @@ const Login = () => {
                         <LoadCanvasTemplate />
                             </label>
                        
-                            <input type="password" placeholder="type the capcha" className="input input-bordered" required />
-                            <button onClick={handlcapcha} className="btn btn-outline btn-error btn-xs mt-3 ">Error</button>
+                            <input type="text" ref={captchaRaf} placeholder="type the capcha" className="input input-bordered" required />
+
+                            
+                            <button onClick={handlcapcha} className="btn btn-outline btn-error btn-xs mt-3 p- ">Error</button>
                             
                         </div>
                         <div className="form-control mt-6">
                         
-                            <input className="btn btn-primary" type="submit" onSubmit={handlsubmit} value="Login" />
+                            <input disabled={disabal} className="btn btn-primary" type="submit" onSubmit={handlsubmit} value="Login" />
                         </div>
                     </form>
                 </div>

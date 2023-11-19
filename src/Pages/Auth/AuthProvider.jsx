@@ -1,10 +1,16 @@
+import { createContext } from "react";
 
+ const AuthContext=createContext()
 
-const AuthProvider = () => {
+const AuthProvider = ({children}) => {
+
+    const info ={
+
+    }
     return (
-        <div>
-            
-        </div>
+        <AuthContext.Provider value={info}>
+            {children}
+        </AuthContext.Provider>
     );
 };
 
