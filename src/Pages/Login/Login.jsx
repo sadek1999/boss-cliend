@@ -33,10 +33,11 @@ const Login = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center w-1/2 lg:text-left">
-                    <h1 className="text-5xl font-bold">Login now!</h1>
+                    
                     <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                 </div>
                 <div className="card flex-shrink-0 w-1/2 max-w-sm shadow-2xl bg-base-100">
+                <h1 className="text-5xl font-bold">Login now!</h1>
                     <form className="card-body">
                         <div className="form-control">
                             <label className="label">
@@ -69,7 +70,7 @@ const Login = () => {
                             <input disabled={disabal} className="btn btn-primary" type="submit" onSubmit={handlsubmit} value="Login" />
                         </div>
                     </form>
-                    are you new ?<Link to={'/singup'}> sing up</Link>
+                    <p>Are you new ? <Link to={'/singup'}>Sing up</Link></p>
                 </div>
               
             </div>
