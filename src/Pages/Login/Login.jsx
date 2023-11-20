@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 
 const Login = () => {
@@ -68,7 +69,9 @@ const Login = () => {
                             <input disabled={disabal} className="btn btn-primary" type="submit" onSubmit={handlsubmit} value="Login" />
                         </div>
                     </form>
+                    are you new ?<Link to={'/singup'}> sing up</Link>
                 </div>
+              
             </div>
         </div>
     );
