@@ -19,7 +19,10 @@ const Card = ({item}) => {
             // console.log(food)
             const order ={
                 foodId:_id,
-                email:user?.email
+                email:user?.email,
+                name,
+                price,
+                image
 
             }
             console.log(order)

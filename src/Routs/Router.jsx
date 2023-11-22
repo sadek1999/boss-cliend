@@ -47,7 +47,7 @@ const router = createBrowserRouter([
       element:<Dashbord></Dashbord>,
       children:[
         {
-          path:'/dashbord/card',
+          path:'card',
           element:<UserCard></UserCard>
         }
 
