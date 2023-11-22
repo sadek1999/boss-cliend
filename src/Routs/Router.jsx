@@ -6,6 +6,9 @@ import Menu from '../Pages/Menu/Mernu/Menu';
 import Order from '../Pages/Order/Order.jsx/Order';
 import Login from '../Pages/Login/Login';
 import Singup from '../Pages/Singup/Singup';
+import PrivateRout from './PrivateRout';
+import Dashbord from '../Pages/Dashbord/Dashbord';
+import UserCard from '../Pages/Dashbord/Card/UserCard';
 
 const router = createBrowserRouter([
     {
@@ -39,6 +42,17 @@ const router = createBrowserRouter([
         
       ]
     },
+    {
+      path:'/dashbord',
+      element:<Dashbord></Dashbord>,
+      children:[
+        {
+          path:'/dashbord/card',
+          element:<UserCard></UserCard>
+        }
+
+      ]
+    }
   ]);
   
   export default router;

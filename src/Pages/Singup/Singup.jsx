@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Auth/AuthProvider";
 
 const Singup = () => {
+
+    const {singup,update}=useContext(AuthContext)
 
     const {
         register,
@@ -12,7 +16,19 @@ const Singup = () => {
     } = useForm()
 
     const onSubmit = (data) => {
-        console.log(data)
+
+        console.log(data.email)
+        singup(data.email,data.password)
+        .then(res=>{
+            console.log(res)
+           update(data.name,data.photo)
+           .then(res=>{
+            
+           })
+           .catch(error=>{
+            console.log(error)
+           })
+        })
     }
 
 
@@ -41,6 +57,13 @@ const Singup = () => {
                                 </label>
                                 <input type="text" name='name' {...register("name", { required: true })} placeholder="name" className="input input-bordered" />
                                 {errors.name && <span>This field is required</span>}
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Photo url</span>
+                                </label>
+                                <input type="text"  {...register("photo", { required: true })} placeholder="url" className="input input-bordered" />
+                                {errors.name && <span>url is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">

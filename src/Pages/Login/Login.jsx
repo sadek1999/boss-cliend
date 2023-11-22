@@ -1,16 +1,25 @@
-import { useEffect, useRef, useState } from 'react';
+// import { useEffect, useRef, useState } from 'react';
+import { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
-import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Auth/AuthProvider';
+import Swal from 'sweetalert2';
+// import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 
 const Login = () => {
-    const captchaRaf = useRef(null)
-    const [disabal, setdisabal] = useState(true)
+    const {login}=useContext(AuthContext)
+    const  navigate=useNavigate()
+    const location=useLocation()
+
+    let f =location.state?.from?.pathname ||'/'
+    
+    
+    // const [disabal, setdisabal] = useState(true)
 
 
-    useEffect(() => {
-        loadCaptchaEnginge(6);
-    }, [])
+    // useEffect(() => {
+    //     loadCaptchaEnginge(6);
+    // }, [])
 
 
 
@@ -20,16 +29,36 @@ const Login = () => {
         const password = from.password.value;
         const email = from.email.value;
         console.log(password, email)
+        login(email,password)
+        .then(res=>{
+            // console.log(res)
+            if(res){
+                Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "successfully Login",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+
+                  navigate(f, { replace: true });
+            }
+            
+        })
+        .catch(error=>{
+            console.error(error)
+        })
+        
     }
 
-    const handlcapcha = e => {
-        e.preventDefault();
-        const user_captcha_value = captchaRaf.current.value;
-        if (validateCaptcha(user_captcha_value)) {
-            setdisabal(false)
-        }
+    // const handlcapcha = (e) => {
+        
+    //     const user_captcha_value = e.current.value;
+    //     if (validateCaptcha(user_captcha_value)) {
+    //         setdisabal(false)
+    //     }
 
-    }
+    // }
     return (
 
         <div>
@@ -46,7 +75,7 @@ const Login = () => {
                     </div>
                     <div className="card flex-shrink-0 w-1/2 max-w-sm shadow-2xl bg-base-100">
                         <h1 className="text-5xl font-bold">Login now!</h1>
-                        <form className="card-body">
+                        <form onSubmit={handlsubmit} className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -62,20 +91,19 @@ const Login = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            <div className="form-control">
+                            {/* <div className="form-control">
                                 <label className="label">
                                     <LoadCanvasTemplate />
                                 </label>
 
-                                <input type="text" ref={captchaRaf} placeholder="type the capcha" className="input input-bordered" required />
+                                <input type="text" onBlur={handlcapcha} placeholder="type the capcha" className="input input-bordered" required />
 
 
-                                <button onClick={handlcapcha} className="btn btn-outline btn-error btn-xs mt-3 p- ">Error</button>
-
-                            </div>
+                               
+                            </div> */}
                             <div className="form-control mt-6">
 
-                                <input disabled={disabal} className="btn btn-primary" type="submit" onSubmit={handlsubmit} value="Login" />
+                                <input  className="btn btn-primary" type="submit"  value="Login" />
                             </div>
                         </form>
                         <p>Are you new ? <Link to={'/singup'}>Sing up</Link></p>

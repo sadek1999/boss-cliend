@@ -9,7 +9,6 @@ import img5 from '../../../assets/menu/soup-bg.jpg'
 import useMenu from "../../../Components/usemenu/Usemenu";
 import SectionTitle from './../../../Components/SectionTitle/SectionTitle';
 import MenuCatagory from "../manuCatagory/MenuCatagory";
-import Menuitem from "../../../Share/menuitem/Menuitem";
 
 
 const Menu = () => {
